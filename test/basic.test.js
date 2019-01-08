@@ -30,3 +30,33 @@ describe('basic', () => {
         expect(html).toContain('example');
     });
 });
+
+describe('ignore pages files or folders with @ prefix', () => {
+    let nuxt;
+
+    beforeAll(async () => {
+        nuxt = new Nuxt(config);
+        await new Builder(nuxt).build();
+        await nuxt.listen(3000);
+    }, 60000);
+
+    afterAll(async () => {
+        await nuxt.close();
+    });
+
+    test('/example/@components/HomeBanner', async () => {
+        try {
+            await get('/example/@components/HomeBanner');
+        } catch (error) {
+            expect(error.statusCode).toStrictEqual(404);
+        }
+    });
+
+    test('/example/@home-banner', async () => {
+        try {
+            await get('/example/@components/HomeBanner');
+        } catch (error) {
+            expect(error.statusCode).toStrictEqual(404);
+        }
+    });
+});

@@ -27,6 +27,8 @@ export default class Pages {
         }
 
         const parseRoutes = routes => {
+            routes = routes.filter(route => !route.path.includes('@'));
+
             if (!options.namespace && !options.prefix) {
                 return routes;
             }
