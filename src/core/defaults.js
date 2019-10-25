@@ -19,7 +19,8 @@ export default function(options) {
         router: {
             routeNameSplitter: options.router.routeNameSplitter === undefined ?
                 '-' :
-                options.router.routeNameSplitter
+                options.router.routeNameSplitter,
+            dir: 'router'
         }
     };
 }

@@ -4,6 +4,7 @@ import Middleware from './middleware';
 import Modules from './modules';
 import Pages from './pages';
 import Plugins from './plugins';
+import Router from './router';
 import Static from './static';
 import Store from './store';
 
@@ -15,6 +16,7 @@ export default class Actions {
         Modules.run(modular);
         Pages.run(modular);
         Plugins.run(modular);
+        Router.run(modular);
         Static.run(modular);
         Store.run(modular);
     }
